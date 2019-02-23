@@ -4,7 +4,9 @@
   "description": "HTML5APIを存分に利用したブラウザゲームが作ってみたい",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -18,10 +20,17 @@
   },
   "homepage": "https://github.com/sk-mk2/puyopuyo-js#readme",
   "devDependencies": {
+    "@types/socket.io": "^2.1.2",
     "ts-loader": "^5.3.3",
     "typescript": "^3.3.3333",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.0"
+  },
+  "dependencies": {
+    "@types/webpack": "^4.4.24",
+    "@types/webpack-dev-server": "^3.1.2",
+    "phaser": "^3.16.2",
+    "socket.io": "^2.2.0"
   }
 }

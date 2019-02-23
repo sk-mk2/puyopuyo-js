@@ -1,0 +1,8 @@
+{
+    "options": {
+        "sourceMap": true,
+        "target": "es6", 
+        "module": "es2015" 
+    }
+}
+

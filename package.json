@@ -1,0 +1,27 @@
+{
+  "name": "puyopuyo-js",
+  "version": "1.0.0",
+  "description": "HTML5APIを存分に利用したブラウザゲームが作ってみたい",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sk-mk2/puyopuyo-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sk-mk2/puyopuyo-js/issues"
+  },
+  "homepage": "https://github.com/sk-mk2/puyopuyo-js#readme",
+  "devDependencies": {
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.3333",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.0"
+  }
+}

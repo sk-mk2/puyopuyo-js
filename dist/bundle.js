@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function f(str) {\n    console.log(\"Hello, \" + str);\n}\nf('TypeScript');\n\n\n//# sourceURL=webpack:///./src/app.ts?");
+eval("var Gretter = /** @class */ (function () {\n    function Gretter(element) {\n        this.element = element;\n        this.element.innerHTML += 'The time is: ';\n        this.span = document.createElement('span');\n        this.span = document.createElement('span');\n        this.element.appendChild(this.span);\n        this.span.innerText = new Date().toUTCString();\n    }\n    Gretter.prototype.start = function () {\n        var _this = this;\n        this.timerToken = setInterval(function () {\n            return _this.span.innerHTML = new Date().toUTCString();\n        }, 500);\n    };\n    Gretter.prototype.stop = function () {\n        clearTimeout(this.timerToken);\n    };\n    return Gretter;\n}());\nwindow.onload = function () {\n    var el = document.getElementById('content');\n    var greeter = new Gretter(el);\n    greeter.start();\n};\n\n\n//# sourceURL=webpack:///./src/app.ts?");
 
 /***/ })
 

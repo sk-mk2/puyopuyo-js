@@ -2,8 +2,8 @@ import * as Phaser from 'phaser';
 window.onload = () => {
     const config = {
         type: Phaser.AUTO,
-        width: 800,
-        height: 600,
+        width: 320,
+        height: 240,
         scene: {
             preload: preload,
             create: create,
@@ -14,6 +14,7 @@ window.onload = () => {
 };
 
 function preload(){
+    this.load.image('background', 'assets/background.png');
     this.load.image('blue', 'assets/img/b.gif');
     this.load.image('red', 'assets/img/r.gif');
     this.load.image('purple', 'assets/img/p.gif');
@@ -24,7 +25,9 @@ function preload(){
 
 function create(){
     this.red = this.add.sprite(400, 300, 'red');
-    displayField(this, 100, 100);
+    this.add.image(0, 0, 'background');
+    displayField(this, 20, 50);
+    displayField(this, 200, 50);
 }
 
 function displayField(scene: Phaser.Scene, x: integer, y: integer) {

@@ -2,7 +2,7 @@ export function create(){
     this.red = this.add.sprite(400, 300, 'red');
     this.add.image(0, 0, 'background');
     displayField(this, 20, 50);
-    displayField(this, 200, 50);
+    // 2p displayField(this, 200, 50);
 }
 
 function displayField(scene: Phaser.Scene, x: integer, y: integer) {

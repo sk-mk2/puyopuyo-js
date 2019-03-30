@@ -1,5 +1,5 @@
 import * as Phaser from 'phaser';
-window.onload = () => {
+document.addEventListener('DOMContentLoaded', () => {
     const config = {
         type: Phaser.AUTO,
         width: 320,
@@ -11,7 +11,7 @@ window.onload = () => {
         }
     };
     const game = new Phaser.Game(config);
-};
+});
 
 function preload(){
     this.load.image('background', 'assets/background.png');
@@ -44,9 +44,6 @@ function displayField(scene: Phaser.Scene, x: integer, y: integer) {
         }
     }
 }
-
-
-
 
 function update(){
     const cursors = this.input.keyboard.createCursorKeys();

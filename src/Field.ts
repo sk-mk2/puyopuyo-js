@@ -3,12 +3,14 @@ export class Field {
     private static BLOCK_SIZE = 15;
     private static WIDTH = 6;
     private static HEIGHT = 12;
-    private x: number;
-    private y: number;
+    public static instances: Array<Field> = [];
+    public x: number;
+    public y: number;
 
     constructor(x: number, y: number) {
         this.x = x;
         this.y = y;
+        Field.instances.push(this);
     }
 
     display(scene: Phaser.Scene) {

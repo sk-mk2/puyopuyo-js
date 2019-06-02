@@ -16,23 +16,23 @@ function move(tumo: Tumo, moveX, moveY) {
 const existTumos : Array<Tumo> = [];
 let canMoveTumo: Tumo;
 export function update(){
-    //この下二行updateにあるの微妙じゃないか？
-    const cursors = this.input.keyboard.createCursorKeys();
-    const spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-    if(cursors.left.isDown) {
+    //TODO: ぷよの動きをフィールド内のそれぞれのマスに収める
+    //TODO: フィールドとの衝突判定
+    //TODO: ぷよの回転をできるようにする
+    if(this.util.cursors.left.isDown) {
         move(canMoveTumo, -2, 0);
     }
-    if(cursors.right.isDown) {
+    if(this.util.cursors.right.isDown) {
         move(canMoveTumo, 2, 0);
     }
-    if(cursors.up.isDown) {
+    if(this.util.cursors.up.isDown) {
         move(canMoveTumo, 0, -2);
     }
-    if(cursors.down.isDown) {
+    if(this.util.cursors.down.isDown) {
         move(canMoveTumo, 0, 2);
     }
-    if (Phaser.Input.Keyboard.JustDown(spacebar)) {
-        console.log(cursors.shift);
+    if (Phaser.Input.Keyboard.JustDown(this.util.spacebar)) {
+        console.log(this.util.cursors.shift);
         canMoveTumo = tumoFactory(this, 65, 30);
         existTumos.push(canMoveTumo);
 

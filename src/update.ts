@@ -30,7 +30,6 @@ export function update(){
     }
     if(cursors.down.isDown) {
         move(canMoveTumo, 0, 2);
-        console.log(cursors);
     }
     if (Phaser.Input.Keyboard.JustDown(spacebar)) {
         console.log(cursors.shift);

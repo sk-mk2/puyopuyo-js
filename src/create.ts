@@ -1,3 +1,4 @@
+import * as Phaser from 'phaser'
 export function create(){
     this.red = this.add.sprite(400, 300, 'red');
     this.add.image(0, 0, 'background');
@@ -5,7 +6,7 @@ export function create(){
     // 2p displayField(this, 200, 50);
 }
 
-function displayField(scene: Phaser.Scene, x: integer, y: integer) {
+function displayField(scene: Phaser.Scene, x: number, y: number) {
     const BLOCK_SIZE = 15;
     const WIDTH = 6;
     const HEIGHT = 12;

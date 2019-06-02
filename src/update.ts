@@ -1,3 +1,4 @@
+import * as Phaser from 'phaser'
 //インターフェースに関数もたせられなかったけ
 interface Tumo {
     main: Phaser.GameObjects.Sprite,
@@ -40,10 +41,16 @@ export function update(){
 }
 
 //ツモ生成
-function tumoFactory(scene: Phaser.Scene,  x: integer, y: integer) {
+function tumoFactory(scene: Phaser.Scene,  x: number, y: number) {
     const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
+    const colorArray = ['red', 'blue', 'purple', 'green', 'yellow'];
+    const difficulty = {
+        'EASY': 3,
+        'NORMAL': 4,
+        'DIFFICULT': 5
+    }
     return {
-        main: scene.add.sprite(x, y, 'red'),
-        sub: scene.add.sprite(x, y - 15, 'red')
+        main: scene.add.sprite(x, y, colorArray[getRandomInt(difficulty.NORMAL)]),
+        sub: scene.add.sprite(x, y - 15, colorArray[getRandomInt(difficulty.NORMAL)])
     };
 }

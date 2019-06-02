@@ -40,7 +40,7 @@ export function update(){
 }
 
 //ツモ生成
-function tumoFactory(scene: Phaser.Scene,  x: number, y: number) {
+function tumoFactory(scene: Phaser.Scene,  x: number, y: number): Tumo {
     const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
     const colorArray = ['red', 'blue', 'purple', 'green', 'yellow'];
     const difficulty = {

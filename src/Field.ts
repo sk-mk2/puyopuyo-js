@@ -3,16 +3,25 @@ export class Field {
     private static BLOCK_SIZE = 15;
     private static WIDTH = 6;
     private static HEIGHT = 12;
+    private x: number;
+    private y: number;
 
-    static displayField(scene: Phaser.Scene, x: number, y: number) {
-        for (let i = 0; i < this.HEIGHT; i++) {
-            scene.add.sprite(x, y + i * this.BLOCK_SIZE, 'wood');
-            scene.add.sprite(x + this.WIDTH * this.BLOCK_SIZE, y + i * this.BLOCK_SIZE, 'wood');
-            if (i === this.HEIGHT - 1) {
-                for (let j = 1; j < this.WIDTH; j++) {
-                    scene.add.sprite(x + j * this.BLOCK_SIZE, y + i * this.BLOCK_SIZE, 'wood');
+    constructor(x: number, y: number) {
+        this.x = x;
+        this.y = y;
+    }
+
+    display(scene: Phaser.Scene) {
+        for (let i = 0; i < Field.HEIGHT; i++) {
+            scene.add.sprite(this.x, this.y + i * Field.BLOCK_SIZE, 'wood');
+            scene.add.sprite(this.x + Field.WIDTH * Field.BLOCK_SIZE, this.y + i * Field.BLOCK_SIZE, 'wood');
+            if (i === Field.HEIGHT - 1) {
+                for (let j = 1; j < Field.WIDTH; j++) {
+                    scene.add.sprite(this.x + j * Field.BLOCK_SIZE, this.y + i * Field.BLOCK_SIZE, 'wood');
                 }
             }
         }
     }
+
+
 }

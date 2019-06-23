@@ -2,7 +2,9 @@ import * as Phaser from 'phaser'
 export function preload(){
     this.util = {
         cursors: this.input.keyboard.createCursorKeys(),
-        spacebar: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+        spacebar: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE),
+        s: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S),
+        d: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D)
     }
 
     this.load.image('background', 'assets/background.png');

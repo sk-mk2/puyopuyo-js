@@ -4,8 +4,8 @@ export class Field {
     private static WIDTH = 6;
     private static HEIGHT = 12;
     public static instances: Array<Field> = [];
-    public x: number;
-    public y: number;
+    private x: number;
+    private y: number;
 
     constructor(x: number, y: number) {
         this.x = x;

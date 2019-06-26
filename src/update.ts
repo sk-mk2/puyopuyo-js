@@ -1,5 +1,5 @@
 import * as Phaser from 'phaser'
-//インターフェースに関数もたせられなかったけ
+import { EventEmitter } from 'events';
 
 interface Tumo {
     main: Phaser.GameObjects.Sprite,
@@ -12,10 +12,8 @@ function move(tumo: Tumo, moveX: number, moveY: number) {
     tumo.sub.x += moveX;
     tumo.main.y += moveY;
     tumo.sub.y += moveY;
-
 }
 
-const existTumos: Array<Tumo> = [];
 let canMoveTumo: Tumo;
 class Dir {
     //0:t,1:r,2:u,3:l
@@ -61,19 +59,22 @@ export function update() {
     //->一旦配列でフィールドにぷよを埋めていこう
     //->てことは、moveで配列を移動に応じて書き換える感じの方が楽そう
     //->それで配列を反映して画面表示
-    //TODO: ぷよの回転をできるようにする
-    if (this.util.cursors.left.isDown) {
-        move(canMoveTumo, -2, 0);
+    if (Phaser.Input.Keyboard.JustDown(this.util.cursors.left)) {
+        //
+        move(canMoveTumo, -15, 0);
+        console.log('click');
+        this.util.cursors.le
     }
-    if (this.util.cursors.right.isDown) {
-        move(canMoveTumo, 2, 0);
+    if (Phaser.Input.Keyboard.JustDown(this.util.cursors.right)) {
+        move(canMoveTumo, 15, 0);
     }
-    if (this.util.cursors.up.isDown) {
-        move(canMoveTumo, 0, -2);
+    if (Phaser.Input.Keyboard.JustDown(this.util.cursors.up)) {
+        move(canMoveTumo, 0, -15);
     }
-    if (this.util.cursors.down.isDown) {
-        move(canMoveTumo, 0, 2);
+    if (Phaser.Input.Keyboard.JustDown(this.util.cursors.down)) {
+        move(canMoveTumo, 0, 15);
     }
+
     if (Phaser.Input.Keyboard.JustDown(this.util.d)) {
         dir.next();
     } else if (Phaser.Input.Keyboard.JustDown(this.util.s)) {
@@ -87,7 +88,6 @@ export function update() {
     if (Phaser.Input.Keyboard.JustDown(this.util.spacebar)) {
         console.log(this.util.cursors.shift);
         canMoveTumo = tumoFactory(this, 65, 30);
-        existTumos.push(canMoveTumo);
         dir = new Dir();
     }
 }

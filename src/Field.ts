@@ -141,36 +141,35 @@ export class Field {
     }
     //TODO: ここ途中１
     private move(moveX: number, moveY: number) {
+        const targetTumo = this.canMoveTumo; 
         //衝突判定しなきゃ
-        const mainBeforeColor =this.field[this.canMoveTumo.main.y][this.canMoveTumo.main.x].color;
-        const subBeforeColor =this.field[this.canMoveTumo.sub.y][this.canMoveTumo.sub.x].color;
+        if (this.existsWall(targetTumo, moveX, moveY)) {
+            return;
+        }
         
+        const mainBeforeColor =this.field[targetTumo.main.y][targetTumo.main.x].color;
+        const subBeforeColor =this.field[targetTumo.sub.y][targetTumo.sub.x].color;
         
-        this.field[this.canMoveTumo.main.y][this.canMoveTumo.main.x].color = PuyoKind.empty;
-        this.field[this.canMoveTumo.sub.y][this.canMoveTumo.sub.x].color = PuyoKind.empty;
-        
-        this.field[this.canMoveTumo.main.y + moveY][this.canMoveTumo.main.x + moveX].color = 
-            mainBeforeColor;
-        this.field[this.canMoveTumo.sub.y + moveY][this.canMoveTumo.sub.x + moveX].color = 
-            subBeforeColor;
+        this.field[targetTumo.main.y][targetTumo.main.x].color = PuyoKind.empty;
+        this.field[targetTumo.sub.y][targetTumo.sub.x].color = PuyoKind.empty;
+        this.field[targetTumo.main.y + moveY][targetTumo.main.x + moveX].color = mainBeforeColor;
+        this.field[targetTumo.sub.y + moveY][targetTumo.sub.x + moveX].color = subBeforeColor;
        
-        const isEmptyAfterCellMain =
-            this.field[this.canMoveTumo.main.y + moveY][this.canMoveTumo.main.x + moveX].obj
-        const isEmptyAfterCellSub =
-            this.field[this.canMoveTumo.sub.y + moveY][this.canMoveTumo.sub.x + moveX].obj
+        const isEmptyAfterCellMain = this.field[targetTumo.main.y + moveY][targetTumo.main.x + moveX].obj
+        const isEmptyAfterCellSub = this.field[targetTumo.sub.y + moveY][targetTumo.sub.x + moveX].obj
         if (isEmptyAfterCellMain) {
-            this.field[this.canMoveTumo.main.y + moveY][this.canMoveTumo.main.x + moveX].obj.destroy();
-            this.field[this.canMoveTumo.main.y + moveY][this.canMoveTumo.main.x + moveX].obj = null;
+            this.field[targetTumo.main.y + moveY][targetTumo.main.x + moveX].obj.destroy();
+            this.field[targetTumo.main.y + moveY][targetTumo.main.x + moveX].obj = null;
         }
         if (isEmptyAfterCellSub) {
-            this.field[this.canMoveTumo.sub.y + moveY][this.canMoveTumo.sub.x + moveX].obj.destroy();
-            this.field[this.canMoveTumo.sub.y + moveY][this.canMoveTumo.sub.x + moveX].obj = null;
+            this.field[targetTumo.sub.y + moveY][targetTumo.sub.x + moveX].obj.destroy();
+            this.field[targetTumo.sub.y + moveY][targetTumo.sub.x + moveX].obj = null;
         }
         
-        this.canMoveTumo.main.y += moveY;
-        this.canMoveTumo.main.x += moveX;
-        this.canMoveTumo.sub.y += moveY;
-        this.canMoveTumo.sub.x += moveX;
+        targetTumo.main.y += moveY;
+        targetTumo.main.x += moveX;
+        targetTumo.sub.y += moveY;
+        targetTumo.sub.x += moveX;
     }
 
     moveLeft() {
@@ -186,7 +185,13 @@ export class Field {
         this.move(0, 1);
     }
 
-    existsWall() {
+    existsWall(target: Tumo, x: number, y:number) {
         //壁チェック
+        if(this.field[target.main.y + y][target.main.x + x].color !== PuyoKind.empty) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
 }

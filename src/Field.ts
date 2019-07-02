@@ -142,14 +142,31 @@ export class Field {
     //TODO: ここ途中１
     private move(moveX: number, moveY: number) {
         //衝突判定しなきゃ
-        this.field[this.canMoveTumo.main.y + moveY][this.canMoveTumo.main.x + moveX].color = 
-        this.field[this.canMoveTumo.main.y][this.canMoveTumo.main.x].color;
-        this.field[this.canMoveTumo.sub.y + moveY][this.canMoveTumo.sub.x + moveX].color = 
-        this.field[this.canMoveTumo.sub.y][this.canMoveTumo.sub.x].color;
+        const mainBeforeColor =this.field[this.canMoveTumo.main.y][this.canMoveTumo.main.x].color;
+        const subBeforeColor =this.field[this.canMoveTumo.sub.y][this.canMoveTumo.sub.x].color;
+        
         
         this.field[this.canMoveTumo.main.y][this.canMoveTumo.main.x].color = PuyoKind.empty;
         this.field[this.canMoveTumo.sub.y][this.canMoveTumo.sub.x].color = PuyoKind.empty;
-
+        
+        this.field[this.canMoveTumo.main.y + moveY][this.canMoveTumo.main.x + moveX].color = 
+            mainBeforeColor;
+        this.field[this.canMoveTumo.sub.y + moveY][this.canMoveTumo.sub.x + moveX].color = 
+            subBeforeColor;
+       
+        const isEmptyAfterCellMain =
+            this.field[this.canMoveTumo.main.y + moveY][this.canMoveTumo.main.x + moveX].obj
+        const isEmptyAfterCellSub =
+            this.field[this.canMoveTumo.sub.y + moveY][this.canMoveTumo.sub.x + moveX].obj
+        if (isEmptyAfterCellMain) {
+            this.field[this.canMoveTumo.main.y + moveY][this.canMoveTumo.main.x + moveX].obj.destroy();
+            this.field[this.canMoveTumo.main.y + moveY][this.canMoveTumo.main.x + moveX].obj = null;
+        }
+        if (isEmptyAfterCellSub) {
+            this.field[this.canMoveTumo.sub.y + moveY][this.canMoveTumo.sub.x + moveX].obj.destroy();
+            this.field[this.canMoveTumo.sub.y + moveY][this.canMoveTumo.sub.x + moveX].obj = null;
+        }
+        
         this.canMoveTumo.main.y += moveY;
         this.canMoveTumo.main.x += moveX;
         this.canMoveTumo.sub.y += moveY;
